@@ -1,0 +1,47 @@
+//motor shield code
+int directionPin = 12;
+int pwmPin = 3;
+int brakePin = 9;
+
+//you may add more pin setups if you wish
+
+//sensor code
+
+void setup() {
+
+//motor shield code
+  pinMode(directionPin, OUTPUT);
+  pinMode(pwmPin, OUTPUT);
+  pinMode(brakePin, OUTPUT);
+
+//sensor code
+
+  pinMode(A2, INPUT);
+  pinMode(A3, INPUT);
+}
+
+ 
+
+void loop() {
+  //read the sensor value
+  int sensorValue = analogRead(A2);
+  
+  //activate if it exceeds the threshold
+  if (sensorValue > 520)
+  {
+    //do something (such as go forward) if the sensor value is high
+    //you can replace this with whatever you want to happen
+    digitalWrite(directionPin, HIGH);
+    analogWrite(pwmPin, 255);
+  }
+  else
+  {
+    //do something else (such as go in reverse) if the sensor value is low
+    //you can replace this also
+    digitalWrite(directionPin, LOW);
+    analogWrite(pwmPin, 100);
+  }
+
+  //have a short delay so that you can read values more frequently
+  delay(250);
+}
